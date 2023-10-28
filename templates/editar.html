@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Editar</title>
+</head>
+<body>
+    <h1 class="font-bold pt-4 pl-8 pb-6">Aqui podras editar la Alummna seleccionada</h1>
+    
+    <form action="{{ url_for('editar', id=alumna.id) }}" method="post">
+
+        <div class="pt-2 pl-8">
+            <input type="text" name="nombre" placeholder="Nombre de la alumna" value="{{alumna.nombre}}">
+            <input type="text" name="apellido" placeholder="Apellido de la alumna" value="{{alumna.apellido}}">
+            <input type="number" name="edad" placeholder="Edad de la alumna" value="{{alumna.edad}}">
+            <input type="text" name="colegio" placeholder="Colegio de la alumna" value="{{alumna.colegio}}">
+        </div>
+
+        <button type="submit" class="font-bold text-sky-600 pt-4 pl-8" >
+            Editar
+        </button>
+        <button class="font-bold pt-4 pl-8 text-sky-600">
+            <a href="{{ url_for('index') }}">Cancelar</a>
+        </button>
+
+    </form>
+
+</body>
+</html>

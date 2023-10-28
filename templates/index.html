@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Index</title>
+</head>
+<body>
+    <h1 class="font-bold pt-6 pl-6 pb-6">Ver Alumnos</h1>
+
+    <!-- Inicio read - ver -->
+    {% for alumna in alumnas %}
+            <li>{{ alumna.nombre }}</li>
+            <li>{{ alumna.apellido }}</li>
+            <li>{{ alumna.edad }}</li>
+            <li class="pb-6">{{ alumna.colegio }}</li>
+            <!-- Inicio Editar -->
+            <button>
+                <a href="{{ url_for('editar', id=alumna.id) }}">Editar</a>
+            </button>
+            <!-- Fin Editar -->
+
+            <!-- Inicio delete -->
+            <button class="font-bold text-sky-600 pb-6">
+                <a href="{{ url_for('eliminar', id=alumna.id) }}">Eliminar</a>
+            </button>
+            <!-- Fin delete -->
+    {% endfor %}
+    <!-- Fin read - ver -->
+
+    <!-- Inicio create - crear -->
+    <h2 class="font-bold pt-4 pl-4 pb-2">Aqui podras Agregar Alumnas</h2>
+
+    <form action="{{ url_for('crear') }}", method="post">
+
+        <div class="pt-2 pl-8">
+            <input name='nombre' type="text" placeholder="Nombre de la alumna">
+            <input name='apellido' type="text" placeholder="Apellido del alumno">
+            <input name='edad' type="number" placeholder="Edad del alumno">
+            <input name='colegio' type="text" placeholder="Colegio del alumno">
+        </div>
+        <div class="pt-4 pl-8">
+            <button type="submit" class="text-sky-600 font-bold py-2 px-4">
+                Agregar Alumna
+            </button>
+        </div>
+    </form>
+    <!-- Fin create - crear -->
+    
+</body>
+</html>
